@@ -22,17 +22,26 @@ class App extends React.Component {
             }
         );
     }
+    
+    //Life Cycle Methods
+    componentDidMount(){
+        console.log("Component Rendered");
+    }
+
+    componentDidUpdate(){
+        console.log("Component updated and rerendered");
+    }
 
     //Render method has to be defined
     render() {
-        if(this.state.lat == 'Very High' && this.state.err == ''){
+        if(this.state.lat === 'Very High' && this.state.err === ''){
             return (
             <div>
                 Loading . . .
             </div>
             );
         }
-        else if(this.state.lat == 'Very High' && this.state.err != ''){
+        else if(this.state.lat === 'Very High' && this.state.err !== ''){
             return (
                 <div>
                     Error: {this.state.err}
