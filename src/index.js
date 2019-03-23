@@ -12,15 +12,16 @@ class App extends React.Component {
             lat: 'Very High',
             long: null
         };
+
+        window.navigator.geolocation.getCurrentPosition(
+            //To update states, ALWAYS use setState
+            position => this.setState({lat: position.coords.latitude}),
+            err => console.log(err)
+        );
     }
 
     //Render method has to be defined
     render() {
-        window.navigator.geolocation.getCurrentPosition(
-            position => console.log(position),
-            err => console.log(err)
-        );
-
         return <div>Latitude: {this.state.lat}</div>
     }
 }
