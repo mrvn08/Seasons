@@ -13,19 +13,17 @@ class App extends React.Component {
             long: 'I think east or something',
             err: ''
         };
-
-        window.navigator.geolocation.getCurrentPosition(
-            //To update states, ALWAYS use setState
-            position => this.setState({lat: position.coords.latitude, long: position.coords.longitude}),
-            err => {
-                this.setState({err: err.message});
-            }
-        );
     }
     
     //Life Cycle Methods
+    
+    //It is more appropriate to do data loading in componentDidMount
     componentDidMount(){
-        console.log("Component Rendered");
+        window.navigator.geolocation.getCurrentPosition(
+            //To update states, ALWAYS use setState
+            position => this.setState({lat: position.coords.latitude, long: position.coords.longitude}),
+            err => this.setState({err: err.message})
+        );
     }
 
     componentDidUpdate(){
