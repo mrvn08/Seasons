@@ -3,18 +3,25 @@ import ReactDOM from 'react-dom';
 
 class App extends React.Component {
     //This function is optional
-    constructor(props) {
-        //We're extending from React props. this is required
-        super(props);
+    // constructor(props) {
+    //     //We're extending from React props. this is required
+    //     super(props);
         
-        //Initializing State
-        this.state = {
-            lat: 'Very High',
-            long: 'I think east or something',
-            err: ''
-        };
-    }
+    //     //Initializing State
+    //     this.state = {
+    //         lat: 'Very High',
+    //         long: 'I think east or something',
+    //         err: ''
+    //     };
+    // }
     
+    //Alternate way of initializing state
+    state = {
+        lat: 'Very High',
+        long: 'I think east or something',
+        err: ''
+    };
+
     //Life Cycle Methods
     
     //It is more appropriate to do data loading in componentDidMount
