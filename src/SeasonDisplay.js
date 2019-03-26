@@ -1,10 +1,20 @@
 import React from "react";
 
+const seasonConfig = {
+    summer : {
+        text: 'Let\'s hit the beach',
+        iconName: 'sun'
+    },
+    winter : {
+        text: 'Burr, it\'s cold',
+        iconName: 'snowflake'
+    }
+};
 const getSeason = (lat, month) => {
     if (month > 2 && month < 9){
-        return lat > 0 ? "Summer" : "Winter";
+        return lat > 0 ? "summer" : "winter";
     }
-    else return lat <= 0 ? "Winter" : "Summer";
+    else return lat <= 0 ? "winter" : "summer";
 }
 
 class SeasonDisplay extends React.Component{
@@ -12,13 +22,12 @@ class SeasonDisplay extends React.Component{
     state = { season: getSeason(this.props.lat, new Date().getMonth()) };
 
     render(){
-        const icon = this.state.season === "Winter" ? "snowflake" : "sun";
-        const text = this.state.season === "Winter" ? "Burr, it's chilly" : "Let's hit the beach";
+        const {text, iconName} = seasonConfig[this.state.season];
         return (
             <div>
-                <i className = {`${icon} icon`} />
+                <i className = {`${iconName} icon`} />
                 <h1>{text}</h1>
-                <i className = {`${icon} icon`} />
+                <i className = {`${iconName} icon`} />
             </div>
         );
     }
