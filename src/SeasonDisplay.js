@@ -12,8 +12,15 @@ class SeasonDisplay extends React.Component{
     state = { season: getSeason(this.props.lat, new Date().getMonth()) };
 
     render(){
-        console.log(this.state.season);
-        return <div>Latitude = {this.props.lat}</div>
+        const icon = this.state.season === "Winter" ? "snowflake" : "sun";
+        const text = this.state.season === "Winter" ? "Burr, it's chilly" : "Let's hit the beach";
+        return (
+            <div>
+                <i className = {`${icon} icon`} />
+                <h1>{text}</h1>
+                <i className = {`${icon} icon`} />
+            </div>
+        );
     }
 };
 
