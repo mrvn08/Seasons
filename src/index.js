@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import SeasonDisplay from  './SeasonDisplay';
 
 class App extends React.Component {
     //This function is optional
@@ -40,25 +41,12 @@ class App extends React.Component {
     //Render method has to be defined
     render() {
         if(this.state.lat === 'Very High' && this.state.err === ''){
-            return (
-            <div>
-                Loading . . .
-            </div>
-            );
+            return <div>Loading . . .</div>;
         }
         else if(this.state.lat === 'Very High' && this.state.err !== ''){
-            return (
-                <div>
-                    Error: {this.state.err}
-                </div>
-            );    
+            return <div>Error: {this.state.err}</div>;
         }
-        return (
-            <div>
-                Latitude: {this.state.lat}<br/>
-                Longitude: {this.state.long}<br/>
-            </div>
-        );
+        return <SeasonDisplay lat={this.state.lat} long={this.state.long}/>
     }
 }
 
