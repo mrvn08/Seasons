@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SeasonDisplay from  './SeasonDisplay';
+import Spinner from './Spinner';
 
 class App extends React.Component {
     //This function is optional
@@ -41,7 +42,7 @@ class App extends React.Component {
     //Render method has to be defined
     render() {
         if(this.state.lat === 'Very High' && this.state.err === ''){
-            return <div>Loading . . .</div>;
+            return <Spinner text="Please allow us to know your location"/>;
         }
         else if(this.state.lat === 'Very High' && this.state.err !== ''){
             return <div>Error: {this.state.err}</div>;
