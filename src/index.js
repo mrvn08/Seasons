@@ -39,8 +39,7 @@ class App extends React.Component {
         console.log("Component updated and rerendered");
     }
 
-    //Render method has to be defined
-    render() {
+    renderContent(){
         if(this.state.lat === 'Very High' && this.state.err === ''){
             return <Spinner text="Please allow us to know your location"/>;
         }
@@ -48,6 +47,15 @@ class App extends React.Component {
             return <div>Error: {this.state.err}</div>;
         }
         return <SeasonDisplay lat={this.state.lat} long={this.state.long}/>
+    }
+
+    //Render method has to be defined
+    render() {
+        return (
+            <div className="redBorder">
+                {this.renderContent()}
+            </div>
+        ); 
     }
 }
 

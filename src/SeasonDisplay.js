@@ -11,16 +11,17 @@ const seasonConfig = {
         iconName: 'snowflake'
     }
 };
-const getSeason = (lat, month) => {
-    if (month > 2 && month < 9){
-        return lat > 0 ? "summer" : "winter";
-    }
-    else return lat <= 0 ? "winter" : "summer";
-}
 
 class SeasonDisplay extends React.Component{
 
-    state = { season: getSeason(this.props.lat, new Date().getMonth()) };
+    state = { season: this.getSeason(this.props.lat, new Date().getMonth()) };
+
+    getSeason(lat, month){
+        if (month > 2 && month < 9){
+            return lat > 0 ? "summer" : "winter";
+        }
+        else return lat <= 0 ? "winter" : "summer";
+    }
 
     render(){
         const {text, iconName} = seasonConfig[this.state.season];
